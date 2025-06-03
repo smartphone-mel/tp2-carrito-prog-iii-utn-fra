@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup - CSS Grid Layout</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <style>
+html {
+  font-family: 'Cambria', serif, Arial;
+}
+h1, b {
+    text-align: center;
+}
+b {
+    display: block;
+    width: 100%;
+}
+h2 {
+    font-size: 32px;
+}
+h3 {
+    font-size: 24px;
+}
+a[href] {
+  text-decoration: none;
+}
+a[href]:link {
+    color: #0069B4;
+}
+a[href]:hover {
+    color: #0078CE;
+}
+a[href]:active {
+    color: #0087E7;
+}
+a[href]:visited {
+    color: #0069B4;
+}
+footer {
+  text-align: center;
+}
+.css-grid-layout-label {
+  font-size: 18px;
+}
+.container {
+    margin: 0 auto;
+    display: grid;
+    max-width: 1200px;
+    grid-template-areas:
+        "page-note page-note"
+        "photo header"
+        "nav nav"
+        "aside aside"
+        "section section"
+        "footer footer";
+    grid-template-columns: 1fr 3fr;
+    gap: 5px;
+    background-color: #2196F3;
+    padding: 5px;
+}
+.container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+.container > div.page-note > b,
+.container > div.nav > a[href],
+.container > div.nav > b,
+.container > div.aside > h4,
+.container > div.section > h4,
+.container > div.section > i,
+.container > div.section > em,
+.container > div.footer > strong {
+  font-size: 18px;
+}
+.container > div.section > strong {
+  font-size: 20px;
+}
+.container > div.nav > a[href] {
+  font-weight: bold;
+}
+.container > div.page-note {
+  grid-area: page-note;
+  text-align: center;
+}
+.container > div.photo {
+  grid-area: photo;
+  text-align: center;
+}
+.container > div.header {
+  grid-area: header;
+}
+.container > div.nav {
+  display: flex;
+  grid-area: nav;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+.container > div.aside {
+  grid-area: aside;
+}
+.container > div.section {
+  grid-area: section;
+}
+.container > div.section > h4 {
+  text-align: center;
+}
+.container > div.section > i {
+  font-weight: bold;
+}
+.container > div.section > strong {
+  margin-left: 16px;
+}
+.container > div.footer {
+  grid-area: footer;
+  text-align: center;
+}
+    </style>
+  </head>
+  <body>
+    <h1>MOCKUP</h1>
+    <b class="css-grid-layout-label">CSS GRID LAYOUT</b>
+    <hr />
+    <br /><br />
+    <div class="container">
+      <div class="page-note">
+        <b>Page Note</b>
+      </div>
+      <div class="photo">
+        <h3>📸</h3>
+      </div>
+      <div class="header">
+        <h2>Header</h2>
+      </div>
+      <div class="nav">
+        <b>Nav</b>
+        <a href="#">#1</a>
+      </div>
+      <div class="aside">
+        <h4>Aside</h4>
+      </div>
+      <div class="section">
+        <h4>Section</h4>
+        <i>Article</i><br /><br /><em>Lorem ipsum</em><br />
+        <strong>📸</strong>
+        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="footer"><strong>Footer</strong></div>
+    </div>
+    <br /><hr />
+    <footer>
+      <a href="index.html">TP N' 2 | Carrito</a><br /><br />
+      <span>Hecho por <a href="https://github.com/smartphone-mel/" target="_blank">smartphone-mel (GitHub)</a>.</span>
+    </footer>
+  </body>
+</html>
