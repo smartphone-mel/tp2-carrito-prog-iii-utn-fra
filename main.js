@@ -65,6 +65,126 @@ sessionStorage.removeItem("key");
 sessionStorage.clear();
 */
 
+//////////////////////
+// Lista de Productos!
+let listaProductos = [
+    {
+        id: 1,
+        nombre: "Producto 1",
+        precio: 100.00,
+        //img: './assets/placeholder.png'
+    }, {
+        id: 2,
+        nombre: "Producto 2",
+        precio: 200.00,
+    }, {
+        id: 3,
+        nombre: "Producto 3",
+        precio: 300.00,
+    }, {
+        id: 4,
+        nombre: "Producto 4",
+        precio: 400.00,
+    }
+];
+
+//////////////////
+// Etiquetas HTML!
+let contenedorProductos = document.getElementById("contenedor-productos");
+// Por si agrego un filtro-buscador...
+//let inputBuscar = document.getElementById("input-buscar");
+let totalCarrito = document.getElementById("total-carrito");
+let itemsCarrito = document.getElementById("items-carrito");
+
+//inputBuscar.addEventListener("keyup", filtrarProductos);
+
+/////////////////////
+// Filtrar Productos!
+function filtrarProductos() {
+    let valorInput = inputBuscar.value;
+    let listaProductosFiltrados = listaProductos.filter(producto => producto.nombre.toLowerCase().includes(valorInput.toLowerCase())); // Guarda productos con el mismo nombre en un array nuevo.
+    mostrarProductos(listaProductosFiltrados)
+}
+
+/////////////////////
+// Mostrar Productos!
+function mostrarProductos(array) {
+    let htmlProductos = "";
+
+    /*
+    //Eleji forEach porque es mas eficiente en memoria.
+    for (i = 0; i < array.length; i++) {
+        htmlProductos += `
+<article>
+  <span>${producto.nombre}</span>
+  <!--<img src="${producto.img}" alt="">-->
+  <img src="./assets/placeholder.png" alt="placeholder" />
+  <p>Detalles del ${producto.nombre} sugerido.</p>
+  <p class="price">$ ${producto.precio}</p>
+  <button type="button" onclick="agregarCarritos(${producto.id})" class="button">Agregar</button>
+</article>
+`
+      }
+    */
+    array.forEach(producto => {
+        htmlProductos += `
+<article>
+  <span>${producto.nombre}</span>
+  <!--<img src="${producto.img}" alt="${producto.img}">-->
+  <img src="./assets/placeholder.png" alt="placeholder" />
+  <p>Detalles del ${producto.nombre} sugerido.</p>
+  <p class="price">$ ${producto.precio}</p>
+  <button type="button" onclick="agregarCarritos(${producto.id})" class="button">Agregar</button>
+</article>
+`;
+    });
+
+    contenedorProductos.innerHTML = htmlProductos
+}
+
+//////////////////////
+// Agregar al Carrito!
+let carrito = [];
+
+function agregarCarritos(id) { 
+    let objetoEncontrado = listaProductos.find(producto => producto.id === id); // Guardamos en una variable nueva el producto con igual id.
+    carrito.push(objetoEncontrado);
+    console.log(carrito);
+    
+    mostrarCarrito(carrito)
+}
+function eliminarProducto(id) {
+    let objetoEliminado = carrito.findIndex(producto => producto.id === id);
+    carrito.splice(objetoEliminado, 1);
+
+    mostrarCarrito(carrito)
+}
+function mostrarCarrito(array) {
+    let htmlCarrito = "";
+    
+    array.forEach(producto => {
+        htmlCarrito += `
+<article>
+  <span>${producto.nombre}</span>
+  <!--<img src="${producto.img}" alt="${producto.img}">-->
+  <img src="./assets/placeholder.png" alt="placeholder" />
+  <p>Detalles del ${producto.nombre} sugerido.</p>
+  <p class="price">$ ${producto.precio}</p>
+  <button type="button" onclick="eliminarProducto(${producto.id})" class="button">Quitar</button>
+</article>
+`
+      });
+    itemsCarrito.innerHTML = htmlCarrito;
+    totalCarrito.innerHTML = array.reduce((acc, producto) => acc + producto.precio, 0)
+}
+/////////////////////////
+// Inicializar Funciones!
+function init() {
+  mostrarProductos(listaProductos)
+}
+
+init();
+
 ////////////////////////////////////////////////
 // Finalizando carga de JavaScript del Proyecto!
 console.log('End JavaScript loading of Project...');

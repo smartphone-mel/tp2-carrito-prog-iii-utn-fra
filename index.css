@@ -114,6 +114,7 @@ aside.header {
 section {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 article {
     margin: 6px;
